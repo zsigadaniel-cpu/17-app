@@ -1,0 +1,23 @@
+header {
+  background-color: rgb(47, 45, 65);
+  .header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1rem;
+    .logo {
+      color: rgb(238, 237, 245);
+    }
+    .nav-container__nav {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      .nav__element {
+        a {
+          color: rgb(238, 237, 245);
+        }
+      }
+    }
+  }
+}

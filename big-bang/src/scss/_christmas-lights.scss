@@ -1,0 +1,33 @@
+.lights-container {
+  background-color: rgb(23, 19, 34);
+  height: calc(100vh - 80px);
+  .lights {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    padding-top: 5rem;
+    .light {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+    }
+  }
+}
+
+.lights-container-v2 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: fit-content;
+  .lights {
+    padding: 0;
+  }
+}
+
+.settings-v2 {
+  overflow: hidden;
+}
+
+.light {
+  cursor: pointer;
+}

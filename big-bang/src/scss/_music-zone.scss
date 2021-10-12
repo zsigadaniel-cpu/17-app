@@ -1,0 +1,38 @@
+.cant-contain-music {
+  background-color: rgb(23, 19, 34);
+  height: calc(100vh - 95px);
+  .crowd {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    z-index: 9;
+    bottom: 0;
+  }
+  .mascot-container {
+    display: flex;
+    justify-content: space-between;
+    .mascot {
+      width: 10rem;
+      height: 10rem;
+      background-color: rgb(23, 19, 34);
+      mix-blend-mode: screen;
+      position: relative;
+      top: 600px;
+    }
+    .figure {
+      width: 30rem;
+      height: 30rem;
+      position: absolute;
+      right: 700px;
+      top: 400px;
+      background-color: whitesmoke;
+    }
+  }
+  .frozen {
+    position: absolute;
+  }
+  .play {
+    position: absolute;
+    top: 0;
+  }
+}

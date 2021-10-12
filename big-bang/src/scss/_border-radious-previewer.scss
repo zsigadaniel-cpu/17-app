@@ -1,0 +1,56 @@
+.border-radious-previewer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+  gap: 2rem;
+  .border-box-previewer {
+    width: 250px;
+    height: 250px;
+    background-color: rgb(29, 29, 78);
+    margin: 1rem;
+  }
+
+  form {
+    max-width: 250px;
+    width: 100%;
+    margin-left: 1rem;
+    display: flex;
+    justify-content: space-between;
+    input {
+      max-width: 50px;
+      width: 100%;
+      border: 2px solid rgb(29, 29, 78);
+      font-size: 20px;
+    }
+  }
+
+  .copy-value-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    .copy-border-style-btn {
+      border-style: none;
+      padding: 10px;
+      color: whitesmoke;
+      background-color: rgb(74, 34, 97);
+      cursor: pointer;
+      &:hover {
+        background-color: rgba(74, 34, 97, 0.801);
+      }
+    }
+    .copy-message {
+      font-size: 2rem;
+      font-weight: bold;
+      color: rgb(204, 96, 24);
+    }
+    .border-css-values {
+      font-size: 1rem;
+      font-weight: bold;
+      background-color: rgb(0, 81, 128);
+      color: whitesmoke;
+      padding: 10px;
+    }
+  }
+}

@@ -3,7 +3,7 @@ import Navigation from "./Navigation";
 import AnimationZone from "./components/AnimationZone";
 import BinaryConvertor from "./components/BinaryConvertor"
 import MusicZone from "./components/MuzicZone";
-import BorderRadiousPreviewer from "./components/BorderRadiousPreviewer";
+import BorderRadiusPreviewer from "./components/BorderRadiusPreviewer";
 import ChristmasLights from "./components/ChristmasLights";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 
@@ -30,7 +30,7 @@ function App() {
             <MusicZone />
           </Route>
           <Route path="/border-radious-previewer">
-            <BorderRadiousPreviewer />
+            <BorderRadiusPreviewer />
           </Route>
           <Route path="/christmas-lights">
             <ChristmasLights />

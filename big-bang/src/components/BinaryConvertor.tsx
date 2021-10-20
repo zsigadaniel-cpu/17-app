@@ -7,57 +7,58 @@ const testForBinaryRegex = /\b[01]+\b/;
 
 function BinaryConvertor() {
   const [binaryTextOutput, setBinaryTextOutput] = useState<string | number[] | number>();
-  const [binaryInput, setBinaryInput] = useState<string | number>();
+  const [binaryInput, setBinaryInput] = useState<string>();
   const [binaryConvertor, setBinaryConvertor] = useState("Binary to decimal");
   const [switchCheck, setSwitchCheck] = useState(true);
 
-  useEffect(() => { }, [binaryTextOutput]);
   useEffect(() => {
     if (!binaryInput) {
       return;
-    } else if (binaryInput.toString.length > 8) {
+    } else if (binaryInput.length > 8) {
       setBinaryTextOutput("Accepting only up to 8 digits binary numbers");
       return;
     } else if (!switchCheck) {
       binaryArray = [];
-      const binaryOutput = guessBinary(binaryInput as number);
+      const binaryOutput = overloader(parseInt(binaryInput));
       setBinaryTextOutput(binaryOutput.reverse());
       return;
     }
 
     if (testForBinaryRegex.test(binaryInput as string)) {
-      outputBinary(binaryInput as string);
+      overloader(binaryInput as string);
     } else {
       setBinaryTextOutput("Please enter a binary number");
     }
 
-    function outputBinary(value: string) {
-      let found = guessBinary(counter).reverse().join("");
-      if (value !== found) {
-        counter++;
-        binaryArray = [];
-        outputBinary(value);
-      } else {
-        setBinaryTextOutput(counter);
-        counter = 0;
+    function overloader(valueNumber: number): number[];
+    function overloader(valueString: string): void;
+    function overloader(value: unknown): number[] | void {
+      if (typeof value === 'string') {
+        let found = overloader(counter).reverse().join("");
+        if (value !== found) {
+          counter++;
+          binaryArray = [];
+          overloader(value);
+        } else {
+          setBinaryTextOutput(counter);
+          counter = 0;
+        }
+      } else if (typeof value === "number") {
+        if (value === 0) {
+          return [0];
+        } else if (value % 2 === 1) {
+          binaryArray.push(1);
+        } else {
+          binaryArray.push(0);
+        }
+        let devider = Math.floor(value / 2);
+        overloader(devider);
+        return binaryArray;
       }
-    }
-
-    function guessBinary(value: number) {
-      if (value === 0) {
-        return [];
-      } else if (value as number % 2 === 1) {
-        binaryArray.push(1);
-      } else {
-        binaryArray.push(0);
-      }
-      let devider = Math.floor(value as number / 2);
-      guessBinary(devider);
-      return binaryArray;
     }
   }, [binaryInput]);
 
-  function eventCatcher(e: React.SyntheticEvent) {
+  function conversionInitiator(e: React.SyntheticEvent) {
     e.preventDefault();
     const target = e.target as typeof e.target & {
       "convert-value": { value: string }
@@ -83,7 +84,7 @@ function BinaryConvertor() {
   return (
     <div className="binary-calculator-container container">
       <h1 className="binary-calculator">{binaryConvertor}</h1>
-      <form className="binary-calculator__form" onSubmit={eventCatcher}>
+      <form className="binary-calculator__form" onSubmit={conversionInitiator}>
         <input name="convert-value" className="form__input" type="number" />
         <div className="form__buttons">
           <button type="submit" className="form__submit">

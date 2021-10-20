@@ -8,6 +8,14 @@
     z-index: 9;
     bottom: 0;
   }
+  .backlight {
+    width: 400px;
+    height: 200px;
+    background-color: cyan;
+    position: absolute;
+    left: 0;
+    right: 0;
+  }
   .mascot-container {
     display: flex;
     justify-content: space-between;

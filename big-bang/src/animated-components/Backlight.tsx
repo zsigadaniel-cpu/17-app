@@ -1,8 +1,9 @@
-import { motion, transform } from "framer-motion";
+import { motion } from "framer-motion";
 
-function Backlight({ music }) {
+
+function Backlight(props: { music: number }) {
   const boxShadow = {
-    boxShadow: `22px 10px 75px ${music * 2}px rgba(0, 255, 255, 0.72)`,
+    boxShadow: `22px 10px 75px ${props.music * 2}px rgba(0, 255, 255, 0.72)`,
   };
   return (
     <div className="backlight-container">
@@ -17,5 +18,6 @@ function Backlight({ music }) {
     </div>
   );
 }
+
 
 export default Backlight;

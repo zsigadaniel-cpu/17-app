@@ -1,0 +1,53 @@
+.user-list {
+  display: flex;
+  gap: 30px;
+  .user-list-names {
+    li {
+      cursor: pointer;
+      font-weight: bold;
+    }
+  }
+
+  @keyframes slide {
+    0% {
+      width: 0;
+      overflow: hidden;
+    }
+    100% {
+      width: 100%;
+      overflow: hidden;
+      padding: 5px;
+    }
+  }
+
+  @keyframes slideBack {
+    0% {
+      width: 100%;
+      overflow: hidden;
+      padding: 5px;
+    }
+    100% {
+      width: 0;
+      overflow: hidden;
+    }
+  }
+
+  .user-list-details {
+    max-width: 200px;
+    width: 100%;
+    .user-details {
+      overflow: hidden;
+      white-space: nowrap;
+      transition: 0.4s ease-in-out;
+      background-color: rgb(23, 19, 34);
+      color: whitesmoke;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      animation: slide 0.4s forwards;
+    }
+    .hide {
+      animation: slideBack 0.4s forwards;
+    }
+  }
+}

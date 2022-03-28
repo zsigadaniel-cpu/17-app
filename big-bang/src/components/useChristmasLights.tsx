@@ -1,6 +1,16 @@
 import { useState, useEffect } from "react";
 
-export const defaultLights = [
+export type lightElement = {
+  id: string,
+  speed: number,
+  delay: number | string,
+  intensity: number,
+  reversal: boolean,
+  color: string,
+  intensityLimit: number
+}
+
+export const defaultLights: lightElement[] = [
   {
     id: "red",
     speed: 1,
@@ -66,29 +76,28 @@ export const defaultLights = [
   },
 ];
 
-const fixLightIntensity = (light) => ({
+const fixLightIntensity = (light: lightElement) => ({
   ...light,
   reversal:
-    parseFloat(light.intensity.toFixed(1)) >= light.intensityLimit
+    light.intensity >= light.intensityLimit
       ? true
-      : parseFloat(light.intensity.toFixed(1)) <= 0
-      ? false
-      : light.reversal,
+      : light.intensity <= 0
+        ? false
+        : light.reversal,
 });
 
-const reverseLight = (light) => ({
+const reverseLight = (light: lightElement) => ({
   ...light,
   intensity: light.reversal
     ? (light.intensity -= light.speed)
     : (light.intensity += light.speed),
 });
 
-export const useChristmasLights = (initialLights) => {
+export const useChristmasLights = (initialLights: lightElement[]) => {
   const [start, setStart] = useState(false);
   const [lights, setLights] = useState(initialLights);
   const [timer, setTimer] = useState(0);
   useEffect(() => {
-    console.log(lights);
     const lightsAnimation = requestAnimationFrame(() => {
       if (start) {
         setTimer((timer) => timer + 1);
@@ -102,7 +111,7 @@ export const useChristmasLights = (initialLights) => {
       setLights((currentLights) =>
         currentLights.map((light) => ({
           ...light,
-          intensity: light.delay ? parseInt(light.delay) : 0,
+          intensity: light.delay ? parseInt(light.delay as string) : 0,
         }))
       );
       cancelAnimationFrame(lightsAnimation);
@@ -112,19 +121,24 @@ export const useChristmasLights = (initialLights) => {
     };
   }, [start, timer]);
 
-  const onSetIntensity = (lightId) => (event) => {
-    const { value } = event.target;
+
+  const onSetIntensity = (lightId: string, event: React.SyntheticEvent) => {
+    const { value } = event.target as typeof event.target & {
+      value: string
+    }
     setLights((currentLights) =>
       currentLights.map((light) => ({
         ...light,
-        intensityLimit: lightId === light.id ? value : light.intensityLimit,
+        intensityLimit: lightId === light.id ? parseInt(value) : light.intensityLimit,
       }))
     );
   };
 
-  const onSetSpeed = (lightId) => (event) => {
-    const { value } = event.target;
-    setLights((currentLights) =>
+  const onSetSpeed = (lightId: string, event: React.SyntheticEvent) => {
+    const { value } = event.target as typeof event.target & {
+      value: string
+    }
+    return setLights((currentLights) =>
       currentLights.map((light) => ({
         ...light,
         speed: lightId === light.id ? parseInt(value) : light.speed,
@@ -132,8 +146,10 @@ export const useChristmasLights = (initialLights) => {
     );
   };
 
-  const onSetColor = (lightId) => (event) => {
-    const { value } = event.target;
+  const onSetColor = (lightId: string, event: React.SyntheticEvent) => {
+    const { value } = event.target as typeof event.target & {
+      value: string
+    }
     setLights((currentLights) =>
       currentLights.map((light, index) => ({
         ...light,
@@ -147,9 +163,10 @@ export const useChristmasLights = (initialLights) => {
     );
   };
 
-  const onSetDelay = (lightId) => (event) => {
-    const { value } = event.target;
-    console.log(value);
+  const onSetDelay = (lightId: string, event: React.SyntheticEvent) => {
+    const { value } = event.target as typeof event.target & {
+      value: string
+    }
     setLights((currentLights) =>
       currentLights.map((light, index) => ({
         ...light,

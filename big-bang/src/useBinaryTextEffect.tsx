@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export default function useBinaryTextEffect(binaryProps) {
+export default function useBinaryTextEffect(binaryProps: [boolean, string]) {
   const [converter, setConverter] = useState(false);
   const condition = binaryProps[0];
   const navigationText = binaryProps[1];
@@ -8,7 +8,7 @@ export default function useBinaryTextEffect(binaryProps) {
   const [
     navigationElementBinaryText,
     setNavigationElementBinaryText,
-  ] = useState(navigationText.split(""));
+  ] = useState<(string | number)[]>(navigationText.split(""));
 
   useEffect(() => {
     if (condition) {

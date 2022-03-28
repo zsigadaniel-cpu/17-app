@@ -28,17 +28,38 @@ function Navigation() {
             {binaryText}
           </Link>
         </li>
-        <li className="nav__element">
+        {/* <li className="nav__element">
           <Link to="/animation-zone">Animation Zone</Link>
-        </li>
+        </li> */}
         <li className="nav__element">
           <Link to="/music-zone">Music Zone</Link>
         </li>
         <li className="nav__element">
-          <Link to="/border-radious-previewer">Border Radious Previewer</Link>
+          <Link to="/border-radious-previewer">Border Radius Previewer</Link>
         </li>
         <li className="nav__element">
           <Link to="/christmas-lights">Christmas Lights</Link>
+        </li>
+        <li className="nav__element">
+          <Link to="/user-list">User List</Link>
+        </li>
+        {/* <li className="nav__element">
+          <Link to="/candy-crush">Candy Crush</Link>
+        </li> */}
+        <li className="nav__element">
+          <Link to="/no-bs-ts">No BS TS</Link>
+        </li>
+        {/* <li className="nav__element">
+          <Link to="/reduxing">Redux</Link>
+        </li> */}
+        <li className="nav__element">
+          <Link to="/incident-counter">Incident Counter</Link>
+        </li>
+        <li className="nav__element">
+          <Link to="/digital-clock">Digital Clock</Link>
+        </li>
+        <li className="nav__element">
+          <Link to="/graph-concept">Graph Concept</Link>
         </li>
       </ul>
     </nav>
